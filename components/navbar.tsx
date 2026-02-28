@@ -11,14 +11,11 @@ const navLinks = [
 ]
 
 export function Navbar() {
-  const [hidden, setHidden] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const { scrollY } = useScroll()
 
   useMotionValueEvent(scrollY, "change", (latest) => {
-    const prev = scrollY.getPrevious() ?? 0
-    setHidden(latest > prev && latest > 100)
     setScrolled(latest > 20)
   })
 
@@ -26,7 +23,7 @@ export function Navbar() {
     <motion.header
       className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 py-4"
       initial={{ y: -80, opacity: 0 }}
-      animate={{ y: hidden ? -80 : 0, opacity: hidden ? 0 : 1 }}
+      animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
     >
       {/* Glassmorphism bg */}
