@@ -8,26 +8,26 @@ const socialLinks = [
   {
     icon: Mail,
     label: "Email",
-    handle: "saptarshi@bisoi.design",
-    href: "mailto:saptarshi@bisoi.design",
+    handle: "saptarshibisoi.official@gmail.com",
+    href: "mailto:saptarshibisoi.official@gmail.com",
   },
   {
     icon: Instagram,
     label: "Instagram",
-    handle: "@saptarshibisoi",
-    href: "https://instagram.com",
+    handle: "@aka.saptarshi",
+    href: "https://www.instagram.com/aka.saptarshi/",
   },
   {
     icon: Twitter,
     label: "Twitter / X",
-    handle: "@saptarshibisoi",
-    href: "https://twitter.com",
+    handle: "@saptarshiBisoi",
+    href: "https://x.com/saptarshiBisoi",
   },
   {
     icon: Linkedin,
     label: "LinkedIn",
     handle: "Saptarshi Bisoi",
-    href: "https://linkedin.com",
+    href: "https://www.linkedin.com/in/saptarshi-legend/",
   },
 ]
 
@@ -100,7 +100,7 @@ export function ContactSection() {
           transition={{ delay: 0.3, duration: 0.6 }}
         >
           <motion.a
-            href="mailto:saptarshi@bisoi.design"
+            href="mailto:saptarshibisoi.official@gmail.com"
             className="group inline-flex items-center gap-3 px-10 py-5 rounded-full font-semibold text-base tracking-wide transition-all"
             style={{ background: "var(--primary)", color: "var(--primary-foreground)" }}
             whileHover={{ scale: 1.05, boxShadow: "0 0 60px oklch(0.72 0.18 210 / 0.5)" }}
@@ -176,7 +176,7 @@ export function ContactSection() {
 
         {/* Pinterest special CTA */}
         <motion.a
-          href="https://pinterest.com"
+          href="https://pin.it/3so5CxrFC"
           target="_blank"
           rel="noopener noreferrer"
           className="group w-full flex items-center justify-between p-6 rounded-2xl border transition-all"
