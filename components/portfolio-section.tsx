@@ -2,6 +2,7 @@
 
 import { motion, useInView, AnimatePresence } from "framer-motion"
 import { useRef, useState } from "react"
+import { ChevronDown, ChevronUp } from "lucide-react"
 import Image from "next/image"
 import { ExternalLink } from "lucide-react"
 import { projects, categories, type Project } from "@/lib/projects-data"
@@ -118,8 +119,11 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 
 // ─── Portfolio Section ─────────────────────────────────────────────────────────
 
+const INITIAL_COUNT = 6
+
 export function PortfolioSection() {
   const [activeFilter, setActiveFilter] = useState("All")
+  const [visibleCount, setVisibleCount] = useState(INITIAL_COUNT)
   const headingRef = useRef<HTMLDivElement>(null)
   const headingInView = useInView(headingRef, { once: true })
 
@@ -127,6 +131,14 @@ export function PortfolioSection() {
     activeFilter === "All"
       ? projects
       : projects.filter((p) => p.category === activeFilter)
+
+  const visible = filtered.slice(0, visibleCount)
+  const hasMore = filtered.length > visibleCount
+
+  function handleFilterChange(cat: string) {
+    setActiveFilter(cat)
+    setVisibleCount(INITIAL_COUNT)
+  }
 
   return (
     <section id="portfolio" className="py-24 md:py-32 px-6 md:px-12">
@@ -175,7 +187,7 @@ export function PortfolioSection() {
           {categories.map((cat) => (
             <button
               key={cat}
-              onClick={() => setActiveFilter(cat)}
+              onClick={() => handleFilterChange(cat)}
               className="px-4 py-2 rounded-full text-xs tracking-wide border transition-all"
               style={{
                 borderColor:
@@ -201,11 +213,55 @@ export function PortfolioSection() {
           layout
         >
           <AnimatePresence mode="popLayout">
-            {filtered.map((project, i) => (
+            {visible.map((project, i) => (
               <ProjectCard key={project.id} project={project} index={i} />
             ))}
           </AnimatePresence>
         </motion.div>
+
+        {/* ── See More / Show Less ───────────────────────────────── */}
+        {filtered.length > INITIAL_COUNT && (
+          <motion.div
+            className="flex justify-center mt-12"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+          >
+            <button
+              onClick={() =>
+                hasMore
+                  ? setVisibleCount((v) => v + 6)
+                  : setVisibleCount(INITIAL_COUNT)
+              }
+              className="flex items-center gap-2 px-8 py-3 rounded-full text-sm font-medium border transition-all duration-300"
+              style={{
+                borderColor: "var(--primary)",
+                color: "var(--primary)",
+                background: "oklch(0.72 0.18 210 / 0.08)",
+              }}
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLButtonElement).style.background =
+                  "oklch(0.72 0.18 210 / 0.18)"
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLButtonElement).style.background =
+                  "oklch(0.72 0.18 210 / 0.08)"
+              }}
+            >
+              {hasMore ? (
+                <>
+                  See More
+                  <ChevronDown size={16} />
+                </>
+              ) : (
+                <>
+                  Show Less
+                  <ChevronUp size={16} />
+                </>
+              )}
+            </button>
+          </motion.div>
+        )}
 
       </div>
     </section>

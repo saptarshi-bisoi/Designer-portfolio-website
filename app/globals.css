@@ -4,7 +4,59 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Deep near-black background */
+  /* Warm off-white light mode — default */
+  --background: oklch(0.98 0.005 90);
+  --foreground: oklch(0.1 0.005 260);
+
+  --card: oklch(0.96 0.006 90);
+  --card-foreground: oklch(0.1 0.005 260);
+
+  --popover: oklch(0.96 0.006 90);
+  --popover-foreground: oklch(0.1 0.005 260);
+
+  /* Cyan-blue accent as primary (slightly deeper for light bg readability) */
+  --primary: oklch(0.55 0.2 210);
+  --primary-foreground: oklch(0.98 0.005 90);
+
+  --secondary: oklch(0.9 0.01 90);
+  --secondary-foreground: oklch(0.2 0.005 260);
+
+  --muted: oklch(0.92 0.008 90);
+  --muted-foreground: oklch(0.4 0.01 250);
+
+  --accent: oklch(0.55 0.2 210);
+  --accent-foreground: oklch(0.98 0.005 90);
+
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.985 0 0);
+
+  --border: oklch(0.78 0.01 260);
+  --input: oklch(0.78 0.01 260);
+  --ring: oklch(0.55 0.2 210);
+
+  --glow: oklch(0.55 0.2 210);
+  --glow-subtle: oklch(0.55 0.2 210 / 0.12);
+
+  --radius: 0.75rem;
+
+  --chart-1: oklch(0.55 0.2 210);
+  --chart-2: oklch(0.5 0.15 180);
+  --chart-3: oklch(0.45 0.12 240);
+  --chart-4: oklch(0.52 0.16 195);
+  --chart-5: oklch(0.58 0.2 225);
+
+  --sidebar: oklch(0.95 0.006 90);
+  --sidebar-foreground: oklch(0.1 0.005 260);
+  --sidebar-primary: oklch(0.55 0.2 210);
+  --sidebar-primary-foreground: oklch(0.98 0.005 90);
+  --sidebar-accent: oklch(0.9 0.01 90);
+  --sidebar-accent-foreground: oklch(0.2 0.005 260);
+  --sidebar-border: oklch(0.78 0.01 260);
+  --sidebar-ring: oklch(0.55 0.2 210);
+}
+
+.dark {
+  /* Deep near-black dark mode */
   --background: oklch(0.09 0.005 260);
   --foreground: oklch(0.95 0.005 240);
 
@@ -14,7 +66,6 @@
   --popover: oklch(0.12 0.008 260);
   --popover-foreground: oklch(0.95 0.005 240);
 
-  /* Cyan-blue accent as primary */
   --primary: oklch(0.72 0.18 210);
   --primary-foreground: oklch(0.09 0.005 260);
 
@@ -34,11 +85,8 @@
   --input: oklch(0.22 0.01 260);
   --ring: oklch(0.72 0.18 210);
 
-  /* Glow color for effects */
   --glow: oklch(0.72 0.18 210);
   --glow-subtle: oklch(0.72 0.18 210 / 0.15);
-
-  --radius: 0.75rem;
 
   --chart-1: oklch(0.72 0.18 210);
   --chart-2: oklch(0.65 0.15 180);
@@ -55,6 +103,7 @@
   --sidebar-border: oklch(0.22 0.01 260);
   --sidebar-ring: oklch(0.72 0.18 210);
 }
+
 
 @theme inline {
   --font-sans: var(--font-inter), 'Inter', sans-serif;
@@ -109,9 +158,11 @@
     cursor: none;
   }
   ::selection {
-    background: oklch(0.72 0.18 210 / 0.3);
-    color: oklch(0.95 0.005 240);
+    background: var(--ring, oklch(0.72 0.18 210)) / 0.3;
+    background: oklch(from var(--primary) l c h / 0.3);
+    color: var(--foreground);
   }
+
 }
 
 /* Custom scrollbar */
@@ -119,12 +170,125 @@
   width: 4px;
 }
 ::-webkit-scrollbar-track {
-  background: oklch(0.09 0.005 260);
+  background: var(--background);
 }
 ::-webkit-scrollbar-thumb {
-  background: oklch(0.72 0.18 210 / 0.4);
+  background: oklch(from var(--primary) l c h / 0.4);
   border-radius: 2px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: oklch(0.72 0.18 210 / 0.7);
+  background: oklch(from var(--primary) l c h / 0.7);
+}
+
+
+/* =============================================
+   NEO-BRUTALIST THEME SWITCHER
+   ============================================= */
+.neo-theme-btn {
+  /* Reset */
+  appearance: none;
+  cursor: pointer;
+  user-select: none;
+
+  /* Layout */
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px 6px 6px;
+
+  /* Light mode — portfolio cyan fill, near-black border + shadow */
+  background: #00c0e2;
+  color: #0a0a14;
+  border: 2.5px solid #0a0a14;
+  border-radius: 0;
+  box-shadow: 4px 4px 0px #0a0a14;
+
+  /* Type */
+  font-family: var(--font-space-grotesk), 'Space Grotesk', sans-serif;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  line-height: 1;
+
+  /* Physical click feel */
+  transition:
+    box-shadow 80ms ease,
+    transform 80ms ease,
+    opacity 150ms ease;
+}
+
+.neo-theme-btn:hover {
+  opacity: 0.88;
+}
+
+.neo-theme-btn:active {
+  box-shadow: 0px 0px 0px #0a0a14;
+  transform: translate(4px, 4px);
+}
+
+/* Dark mode variant — near-black bg, portfolio cyan border + shadow */
+.neo-theme-btn[data-dark="true"] {
+  background: #0a0a14;
+  color: #00c0e2;
+  border-color: #00c0e2;
+  box-shadow: 4px 4px 0px #00c0e2;
+}
+
+.neo-theme-btn[data-dark="true"]:hover {
+  opacity: 0.85;
+}
+
+.neo-theme-btn[data-dark="true"]:active {
+  box-shadow: 0px 0px 0px #00c0e2;
+  transform: translate(4px, 4px);
+}
+
+
+.neo-theme-btn__track {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border: 2px solid currentColor;
+  border-radius: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.neo-theme-btn__icon {
+  position: absolute;
+  font-size: 13px;
+  line-height: 1;
+  transition: opacity 120ms ease, transform 120ms ease;
+}
+
+/* Sun visible in light mode */
+.neo-theme-btn__icon--sun {
+  opacity: 1;
+  transform: translateY(0);
+}
+.neo-theme-btn[data-dark="true"] .neo-theme-btn__icon--sun {
+  opacity: 0;
+  transform: translateY(-100%);
+}
+
+/* Moon visible in dark mode */
+.neo-theme-btn__icon--moon {
+  opacity: 0;
+  transform: translateY(100%);
+}
+.neo-theme-btn[data-dark="true"] .neo-theme-btn__icon--moon {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.neo-theme-btn__label {
+  display: block;
+}
+
+.theme-switcher-placeholder {
+  width: 82px;
+  height: 38px;
 }

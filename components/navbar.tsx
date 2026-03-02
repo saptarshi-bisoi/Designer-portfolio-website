@@ -2,6 +2,8 @@
 
 import { motion, useScroll, useMotionValueEvent } from "framer-motion"
 import { useState } from "react"
+import { ThemeSwitcher } from "@/components/theme-switcher"
+
 
 const navLinks = [
   { label: "Work", href: "#portfolio" },
@@ -33,10 +35,11 @@ export function Navbar() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           style={{
-            background: "oklch(0.09 0.005 260 / 0.85)",
+            background: "oklch(from var(--background) l c h / 0.88)",
             backdropFilter: "blur(20px)",
             borderBottom: "1px solid var(--border)",
           }}
+
         />
       )}
 
@@ -105,7 +108,9 @@ export function Navbar() {
         >
           Hire Me
         </motion.a>
+        <ThemeSwitcher />
       </nav>
+
 
       {/* Mobile menu button */}
       <button
@@ -137,10 +142,11 @@ export function Navbar() {
         animate={{ height: mobileOpen ? "auto" : 0, opacity: mobileOpen ? 1 : 0 }}
         transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
         style={{
-          background: "oklch(0.09 0.005 260 / 0.95)",
+          background: "oklch(from var(--background) l c h / 0.97)",
           backdropFilter: "blur(20px)",
           borderBottom: mobileOpen ? "1px solid var(--border)" : "none",
         }}
+
       >
         <nav className="flex flex-col p-6 gap-4">
           {navLinks.map((link) => (
@@ -162,8 +168,12 @@ export function Navbar() {
           >
             Hire Me
           </a>
+          <div className="mt-4 flex justify-center">
+            <ThemeSwitcher />
+          </div>
         </nav>
       </motion.div>
+
     </motion.header>
   )
 }
