@@ -1,18 +1,40 @@
 "use client"
 
+import dynamic from "next/dynamic"
+import { LazyMotion, domAnimation } from "framer-motion"
 import { LoadingScreen } from "@/components/loading-screen"
-import { CustomCursor } from "@/components/custom-cursor"
 import { Navbar } from "@/components/navbar"
 import { HeroSection } from "@/components/hero-section"
-import { PortfolioSection } from "@/components/portfolio-section"
-import { ServicesSection } from "@/components/services-section"
-import { AboutSection } from "@/components/about-section"
-import { ContactSection } from "@/components/contact-section"
-import { Footer } from "@/components/footer"
+
+// Lazy-load below-the-fold sections to reduce initial JS bundle
+const PortfolioSection = dynamic(
+  () => import("@/components/portfolio-section").then((mod) => ({ default: mod.PortfolioSection })),
+  { ssr: true }
+)
+const ServicesSection = dynamic(
+  () => import("@/components/services-section").then((mod) => ({ default: mod.ServicesSection })),
+  { ssr: true }
+)
+const AboutSection = dynamic(
+  () => import("@/components/about-section").then((mod) => ({ default: mod.AboutSection })),
+  { ssr: true }
+)
+const ContactSection = dynamic(
+  () => import("@/components/contact-section").then((mod) => ({ default: mod.ContactSection })),
+  { ssr: true }
+)
+const Footer = dynamic(
+  () => import("@/components/footer").then((mod) => ({ default: mod.Footer })),
+  { ssr: true }
+)
+const CustomCursor = dynamic(
+  () => import("@/components/custom-cursor").then((mod) => ({ default: mod.CustomCursor })),
+  { ssr: false }
+)
 
 export default function Home() {
   return (
-    <>
+    <LazyMotion features={domAnimation} strict>
       <LoadingScreen />
       <CustomCursor />
       <main className="relative min-h-screen" style={{ background: "var(--background)" }}>
@@ -24,6 +46,6 @@ export default function Home() {
         <ContactSection />
         <Footer />
       </main>
-    </>
+    </LazyMotion>
   )
 }

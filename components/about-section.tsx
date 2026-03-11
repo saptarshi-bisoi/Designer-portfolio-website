@@ -1,6 +1,6 @@
 "use client"
 
-import { motion, useInView } from "framer-motion"
+import { m, useInView } from "framer-motion"
 import { useRef } from "react"
 import Image from "next/image"
 
@@ -38,7 +38,7 @@ export function AboutSection() {
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Image side */}
-          <motion.div
+          <m.div
             ref={imageRef}
             className="relative"
             initial={{ opacity: 0, x: -60 }}
@@ -76,7 +76,7 @@ export function AboutSection() {
               </div>
 
               {/* Floating badge */}
-              <motion.div
+              <m.div
                 className="absolute -bottom-6 -left-6 px-5 py-4 rounded-2xl backdrop-blur-md border"
                 style={{
                   background: "oklch(0.09 0.005 260 / 0.9)",
@@ -97,7 +97,7 @@ export function AboutSection() {
                 >
                   India
                 </p>
-              </motion.div>
+              </m.div>
 
               {/* Glow under image */}
               <div
@@ -105,10 +105,10 @@ export function AboutSection() {
                 style={{ background: "oklch(0.72 0.18 210 / 0.12)" }}
               />
             </div>
-          </motion.div>
+          </m.div>
 
           {/* Text side */}
-          <motion.div
+          <m.div
             ref={ref}
             initial={{ opacity: 0, x: 60 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
@@ -148,7 +148,7 @@ export function AboutSection() {
               </p>
               <div className="flex flex-wrap gap-2">
                 {skills.map((skill, i) => (
-                  <motion.span
+                  <m.span
                     key={skill}
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={inView ? { opacity: 1, scale: 1 } : {}}
@@ -161,13 +161,13 @@ export function AboutSection() {
                     }}
                   >
                     {skill}
-                  </motion.span>
+                  </m.span>
                 ))}
               </div>
             </div>
 
             {/* CTA */}
-            <motion.a
+            <m.a
               href="#contact"
               className="self-start inline-flex items-center gap-3 text-sm font-semibold group"
               style={{ color: "var(--primary)" }}
@@ -180,8 +180,8 @@ export function AboutSection() {
               >
                 →
               </span>
-            </motion.a>
-          </motion.div>
+            </m.a>
+          </m.div>
         </div>
       </div>
     </section>

@@ -155,7 +155,11 @@
   }
   body {
     @apply bg-background text-foreground font-sans antialiased;
-    cursor: none;
+  }
+  @media (hover: hover) and (pointer: fine) {
+    body {
+      cursor: none;
+    }
   }
   ::selection {
     background: var(--ring, oklch(0.72 0.18 210)) / 0.3;

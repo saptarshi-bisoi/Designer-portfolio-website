@@ -1,6 +1,6 @@
 "use client"
 
-import { motion, useInView } from "framer-motion"
+import { m, useInView } from "framer-motion"
 import { useRef } from "react"
 import { Mail, ExternalLink, Instagram, Twitter, Linkedin } from "lucide-react"
 
@@ -63,7 +63,7 @@ export function ContactSection() {
       />
 
       <div className="max-w-4xl mx-auto">
-        <motion.div
+        <m.div
           ref={ref}
           initial={{ opacity: 0, y: 60 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -90,16 +90,16 @@ export function ContactSection() {
           <p className="text-base leading-relaxed max-w-lg mx-auto" style={{ color: "var(--muted-foreground)" }}>
             Have a project in mind? I&apos;d love to hear about it. Send me an email or connect on social media — I typically respond within 24 hours.
           </p>
-        </motion.div>
+        </m.div>
 
         {/* Main CTA */}
-        <motion.div
+        <m.div
           className="flex justify-center mb-16"
           initial={{ opacity: 0, scale: 0.95 }}
           animate={inView ? { opacity: 1, scale: 1 } : {}}
           transition={{ delay: 0.3, duration: 0.6 }}
         >
-          <motion.a
+          <m.a
             href="mailto:saptarshibisoi.official@gmail.com"
             className="group inline-flex items-center gap-3 px-10 py-5 rounded-full font-semibold text-base tracking-wide transition-all"
             style={{ background: "var(--primary)", color: "var(--primary-foreground)" }}
@@ -109,8 +109,8 @@ export function ContactSection() {
             <Mail size={18} />
             Send me an email
             <ExternalLink size={14} className="opacity-70" />
-          </motion.a>
-        </motion.div>
+          </m.a>
+        </m.div>
 
         {/* Divider */}
         <div className="flex items-center gap-4 mb-12">
@@ -122,7 +122,7 @@ export function ContactSection() {
         </div>
 
         {/* Social links grid */}
-        <motion.div
+        <m.div
           className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-12"
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
@@ -131,7 +131,7 @@ export function ContactSection() {
           {socialLinks.map((link, i) => {
             const Icon = link.icon
             return (
-              <motion.a
+              <m.a
                 key={link.label}
                 href={link.href}
                 target="_blank"
@@ -169,13 +169,13 @@ export function ContactSection() {
                   className="ml-auto flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity"
                   style={{ color: "var(--primary)" }}
                 />
-              </motion.a>
+              </m.a>
             )
           })}
-        </motion.div>
+        </m.div>
 
         {/* Pinterest special CTA */}
-        <motion.a
+        <m.a
           href="https://pin.it/3so5CxrFC"
           target="_blank"
           rel="noopener noreferrer"
@@ -217,7 +217,7 @@ export function ContactSection() {
             className="flex-shrink-0 opacity-60 group-hover:opacity-100 transition-opacity"
             style={{ color: "#e60023" }}
           />
-        </motion.a>
+        </m.a>
       </div>
     </section>
   )

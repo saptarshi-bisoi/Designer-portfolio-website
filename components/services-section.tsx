@@ -1,6 +1,6 @@
 "use client"
 
-import { motion, useInView } from "framer-motion"
+import { m, useInView } from "framer-motion"
 import { useRef, useState } from "react"
 import { Palette, Share2, Monitor, Layers } from "lucide-react"
 
@@ -46,7 +46,7 @@ function ServiceCard({ service, index }: { service: (typeof services)[0]; index:
   const Icon = service.icon
 
   return (
-    <motion.div
+    <m.div
       ref={ref}
       initial={{ opacity: 0, y: 50 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -60,7 +60,7 @@ function ServiceCard({ service, index }: { service: (typeof services)[0]; index:
       }}
     >
       {/* Hover glow background */}
-      <motion.div
+      <m.div
         className="absolute inset-0 pointer-events-none"
         animate={{ opacity: hovered ? 1 : 0 }}
         transition={{ duration: 0.4 }}
@@ -71,7 +71,7 @@ function ServiceCard({ service, index }: { service: (typeof services)[0]; index:
 
       {/* Number + Icon row */}
       <div className="flex items-start justify-between relative z-10">
-        <motion.div
+        <m.div
           className="w-14 h-14 rounded-2xl flex items-center justify-center"
           animate={{
             background: hovered ? "oklch(0.72 0.18 210 / 0.15)" : "oklch(0.72 0.18 210 / 0.08)",
@@ -84,7 +84,7 @@ function ServiceCard({ service, index }: { service: (typeof services)[0]; index:
             size={22}
             style={{ color: "var(--primary)" }}
           />
-        </motion.div>
+        </m.div>
         <span
           className="text-5xl font-bold leading-none select-none"
           style={{ color: "var(--border)", fontFamily: "var(--font-space-grotesk)" }}
@@ -120,13 +120,13 @@ function ServiceCard({ service, index }: { service: (typeof services)[0]; index:
       </div>
 
       {/* Bottom glow line */}
-      <motion.div
+      <m.div
         className="absolute bottom-0 left-0 right-0 h-px"
         animate={{ opacity: hovered ? 1 : 0 }}
         transition={{ duration: 0.3 }}
         style={{ background: "linear-gradient(90deg, transparent, var(--primary), transparent)" }}
       />
-    </motion.div>
+    </m.div>
   )
 }
 
@@ -147,7 +147,7 @@ export function ServicesSection() {
 
       <div className="max-w-7xl mx-auto">
         {/* Heading */}
-        <motion.div
+        <m.div
           ref={ref}
           className="mb-16"
           initial={{ opacity: 0, y: 40 }}
@@ -171,7 +171,7 @@ export function ServicesSection() {
               Every project is approached with creativity, precision, and passion for great design.
             </p>
           </div>
-        </motion.div>
+        </m.div>
 
         {/* Cards grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">

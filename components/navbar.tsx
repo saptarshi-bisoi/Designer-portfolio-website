@@ -1,6 +1,6 @@
 "use client"
 
-import { motion, useScroll, useMotionValueEvent } from "framer-motion"
+import { m, useScroll, useMotionValueEvent } from "framer-motion"
 import { useState } from "react"
 import { ThemeSwitcher } from "@/components/theme-switcher"
 
@@ -22,7 +22,7 @@ export function Navbar() {
   })
 
   return (
-    <motion.header
+    <m.header
       className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 py-4"
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
@@ -30,7 +30,7 @@ export function Navbar() {
     >
       {/* Glassmorphism bg */}
       {scrolled && (
-        <motion.div
+        <m.div
           className="absolute inset-0 rounded-none"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -44,7 +44,7 @@ export function Navbar() {
       )}
 
       {/* Logo */}
-      <motion.a
+      <m.a
         href="#"
         className="relative z-10 flex items-center gap-2 group"
         whileHover={{ scale: 1.02 }}
@@ -67,12 +67,12 @@ export function Navbar() {
         >
           SAPTARSHI
         </span>
-      </motion.a>
+      </m.a>
 
       {/* Desktop nav */}
       <nav className="relative z-10 hidden md:flex items-center gap-8">
         {navLinks.map((link, i) => (
-          <motion.a
+          <m.a
             key={link.href}
             href={link.href}
             className="text-sm tracking-wide transition-colors relative group"
@@ -87,9 +87,9 @@ export function Navbar() {
               className="absolute -bottom-0.5 left-0 h-px w-0 group-hover:w-full transition-all duration-300"
               style={{ background: "var(--primary)" }}
             />
-          </motion.a>
+          </m.a>
         ))}
-        <motion.a
+        <m.a
           href="#contact"
           className="text-sm px-4 py-2 rounded-full border font-medium transition-all"
           style={{
@@ -107,7 +107,7 @@ export function Navbar() {
           transition={{ delay: 0.5 }}
         >
           Hire Me
-        </motion.a>
+        </m.a>
         <ThemeSwitcher />
       </nav>
 
@@ -118,17 +118,17 @@ export function Navbar() {
         onClick={() => setMobileOpen(!mobileOpen)}
         aria-label="Toggle menu"
       >
-        <motion.span
+        <m.span
           className="block w-5 h-px"
           style={{ background: "var(--foreground)" }}
           animate={{ rotate: mobileOpen ? 45 : 0, y: mobileOpen ? 5 : 0 }}
         />
-        <motion.span
+        <m.span
           className="block w-5 h-px"
           style={{ background: "var(--foreground)" }}
           animate={{ opacity: mobileOpen ? 0 : 1 }}
         />
-        <motion.span
+        <m.span
           className="block w-5 h-px"
           style={{ background: "var(--foreground)" }}
           animate={{ rotate: mobileOpen ? -45 : 0, y: mobileOpen ? -5 : 0 }}
@@ -136,7 +136,7 @@ export function Navbar() {
       </button>
 
       {/* Mobile menu */}
-      <motion.div
+      <m.div
         className="absolute top-full left-0 right-0 md:hidden overflow-hidden"
         initial={false}
         animate={{ height: mobileOpen ? "auto" : 0, opacity: mobileOpen ? 1 : 0 }}
@@ -172,8 +172,8 @@ export function Navbar() {
             <ThemeSwitcher />
           </div>
         </nav>
-      </motion.div>
+      </m.div>
 
-    </motion.header>
+    </m.header>
   )
 }

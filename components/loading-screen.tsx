@@ -1,6 +1,6 @@
 "use client"
 
-import { motion, AnimatePresence } from "framer-motion"
+import { m, AnimatePresence } from "framer-motion"
 import { useEffect, useState } from "react"
 
 export function LoadingScreen() {
@@ -14,15 +14,15 @@ export function LoadingScreen() {
           clearInterval(interval)
           return 100
         }
-        return prev + Math.floor(Math.random() * 12) + 5
+        return prev + Math.floor(Math.random() * 15) + 8
       })
-    }, 30)
+    }, 25)
     return () => clearInterval(interval)
   }, [])
 
   useEffect(() => {
     if (count >= 100) {
-      const timeout = setTimeout(() => setIsLoading(false), 400)
+      const timeout = setTimeout(() => setIsLoading(false), 200)
       return () => clearTimeout(timeout)
     }
   }, [count])
@@ -30,12 +30,12 @@ export function LoadingScreen() {
   return (
     <AnimatePresence>
       {isLoading && (
-        <motion.div
+        <m.div
           className="fixed inset-0 z-[100] flex items-center justify-center"
           style={{ backgroundColor: "var(--background)" }}
           initial={{ opacity: 1 }}
           exit={{ opacity: 0, y: -20 }}
-          transition={{ duration: 0.6, ease: [0.76, 0, 0.24, 1] }}
+          transition={{ duration: 0.4, ease: [0.76, 0, 0.24, 1] }}
         >
           {/* Grid background */}
           <div
@@ -49,7 +49,7 @@ export function LoadingScreen() {
 
           <div className="flex flex-col items-center gap-8">
             {/* Logo mark */}
-            <motion.div
+            <m.div
               initial={{ scale: 0.5, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.5, ease: [0.34, 1.56, 0.64, 1] }}
@@ -68,15 +68,15 @@ export function LoadingScreen() {
                 </span>
               </div>
               {/* Spinning ring */}
-              <motion.div
+              <m.div
                 className="absolute -inset-2 rounded-3xl border border-primary/20"
                 animate={{ rotate: 360 }}
                 transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
               />
-            </motion.div>
+            </m.div>
 
             {/* Name */}
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.5 }}
@@ -94,10 +94,10 @@ export function LoadingScreen() {
               >
                 SAPTARSHI BISOI
               </h1>
-            </motion.div>
+            </m.div>
 
             {/* Progress bar */}
-            <motion.div
+            <m.div
               initial={{ opacity: 0, width: 0 }}
               animate={{ opacity: 1, width: 200 }}
               transition={{ delay: 0.4, duration: 0.4 }}
@@ -107,7 +107,7 @@ export function LoadingScreen() {
                 className="h-px w-48 rounded-full"
                 style={{ background: "var(--border)" }}
               />
-              <motion.div
+              <m.div
                 className="absolute top-0 left-0 h-px rounded-full"
                 style={{
                   width: `${count}%`,
@@ -117,15 +117,15 @@ export function LoadingScreen() {
                 }}
                 transition={{ duration: 0.1 }}
               />
-              <motion.p
+              <m.p
                 className="text-center mt-3 text-xs tabular-nums"
                 style={{ color: "var(--muted-foreground)" }}
               >
                 {Math.min(count, 100)}%
-              </motion.p>
-            </motion.div>
+              </m.p>
+            </m.div>
           </div>
-        </motion.div>
+        </m.div>
       )}
     </AnimatePresence>
   )

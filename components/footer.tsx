@@ -1,6 +1,6 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { m } from "framer-motion"
 
 export function Footer() {
   return (
@@ -9,7 +9,7 @@ export function Footer() {
       style={{ borderColor: "var(--border)" }}
     >
       <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-        <motion.div
+        <m.div
           className="flex items-center gap-3"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -29,7 +29,7 @@ export function Footer() {
           <span className="text-sm font-semibold" style={{ color: "var(--foreground)", fontFamily: "var(--font-space-grotesk)" }}>
             SAPTARSHI BISOI
           </span>
-        </motion.div>
+        </m.div>
         <p className="text-xs" style={{ color: "var(--muted-foreground)" }}>
           &copy; {new Date().getFullYear()} Saptarshi Bisoi. All rights reserved.
         </p>

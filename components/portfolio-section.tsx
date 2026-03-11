@@ -1,6 +1,6 @@
 "use client"
 
-import { motion, useInView, AnimatePresence } from "framer-motion"
+import { m, useInView, AnimatePresence } from "framer-motion"
 import { useRef, useState } from "react"
 import { ChevronDown, ChevronUp } from "lucide-react"
 import Image from "next/image"
@@ -15,7 +15,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
   const inView = useInView(ref, { once: true, margin: "-80px" })
 
   return (
-    <motion.div
+    <m.div
       ref={ref}
       layout
       initial={{ opacity: 0, y: 60 }}
@@ -42,7 +42,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
         />
 
         {/* Blue glow overlay on hover */}
-        <motion.div
+        <m.div
           className="absolute inset-0"
           initial={{ opacity: 0 }}
           animate={{ opacity: hovered ? 1 : 0 }}
@@ -55,7 +55,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 
         {/* External link badge */}
         {project.pinterestUrl && (
-          <motion.div
+          <m.div
             className="absolute top-4 right-4 w-9 h-9 rounded-full flex items-center justify-center"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: hovered ? 1 : 0, scale: hovered ? 1 : 0.8 }}
@@ -66,7 +66,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
             }}
           >
             <ExternalLink size={14} />
-          </motion.div>
+          </m.div>
         )}
 
         {/* Featured badge */}
@@ -105,7 +105,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       </div>
 
       {/* ── Glow border on hover ──────────────────────────────────── */}
-      <motion.div
+      <m.div
         className="absolute inset-0 rounded-2xl pointer-events-none"
         animate={{
           boxShadow: hovered
@@ -114,7 +114,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
         }}
         transition={{ duration: 0.3 }}
       />
-    </motion.div>
+    </m.div>
   )
 }
 
@@ -146,7 +146,7 @@ export function PortfolioSection() {
       <div className="max-w-7xl mx-auto">
 
         {/* ── Heading ───────────────────────────────────────────── */}
-        <motion.div
+        <m.div
           ref={headingRef}
           className="mb-16"
           initial={{ opacity: 0, y: 40 }}
@@ -176,10 +176,10 @@ export function PortfolioSection() {
               Click any project to view the full post on Pinterest.
             </p>
           </div>
-        </motion.div>
+        </m.div>
 
         {/* ── Filter tabs ───────────────────────────────────────── */}
-        <motion.div
+        <m.div
           className="flex flex-wrap gap-2 mb-12"
           initial={{ opacity: 0 }}
           animate={headingInView ? { opacity: 1 } : {}}
@@ -206,10 +206,10 @@ export function PortfolioSection() {
               {cat}
             </button>
           ))}
-        </motion.div>
+        </m.div>
 
         {/* ── Project grid ──────────────────────────────────────── */}
-        <motion.div
+        <m.div
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
           layout
         >
@@ -218,11 +218,11 @@ export function PortfolioSection() {
               <ProjectCard key={project.id} project={project} index={i} />
             ))}
           </AnimatePresence>
-        </motion.div>
+        </m.div>
 
         {/* ── See More / Show Less ───────────────────────────────── */}
         {filtered.length > INITIAL_COUNT && (
-          <motion.div
+          <m.div
             className="flex justify-center mt-12"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -261,7 +261,7 @@ export function PortfolioSection() {
                 </>
               )}
             </button>
-          </motion.div>
+          </m.div>
         )}
 
       </div>

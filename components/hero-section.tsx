@@ -1,6 +1,6 @@
 "use client"
 
-import { motion, useScroll, useTransform } from "framer-motion"
+import { m, useScroll, useTransform } from "framer-motion"
 import { useRef } from "react"
 import { ArrowDown, Sparkles } from "lucide-react"
 
@@ -46,7 +46,7 @@ export function HeroSection() {
       />
 
       {/* Floating orbs */}
-      <motion.div
+      <m.div
         className="absolute rounded-full pointer-events-none"
         style={{
           width: 600,
@@ -59,7 +59,7 @@ export function HeroSection() {
         animate={{ scale: [1, 1.1, 1], opacity: [0.5, 0.8, 0.5] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
       />
-      <motion.div
+      <m.div
         className="absolute rounded-full pointer-events-none"
         style={{
           width: 400,
@@ -73,7 +73,7 @@ export function HeroSection() {
       />
 
       {/* Content */}
-      <motion.div
+      <m.div
         className="relative z-10 text-center px-6 max-w-5xl mx-auto"
         style={{ y, opacity }}
         variants={containerVariants}
@@ -81,7 +81,7 @@ export function HeroSection() {
         animate="visible"
       >
         {/* Badge */}
-        <motion.div variants={itemVariants} className="flex justify-center mb-8">
+        <m.div variants={itemVariants} className="flex justify-center mb-8">
           <div
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full border text-xs tracking-widest uppercase font-medium"
             style={{
@@ -94,10 +94,10 @@ export function HeroSection() {
             Available for freelance
             <Sparkles size={12} />
           </div>
-        </motion.div>
+        </m.div>
 
         {/* Main name */}
-        <motion.h1
+        <m.h1
           variants={itemVariants}
           className="text-5xl sm:text-7xl md:text-8xl lg:text-[100px] font-bold leading-none tracking-tighter mb-6 text-balance"
           style={{ fontFamily: "var(--font-space-grotesk)", color: "var(--foreground)" }}
@@ -112,29 +112,29 @@ export function HeroSection() {
           >
             BISOI
           </span>
-        </motion.h1>
+        </m.h1>
 
         {/* Title */}
-        <motion.p
+        <m.p
           variants={itemVariants}
           className="text-base sm:text-lg md:text-xl tracking-[0.2em] uppercase mb-8"
           style={{ color: "var(--muted-foreground)" }}
         >
           Graphic Designer&nbsp;&nbsp;/&nbsp;&nbsp;Creative Developer
-        </motion.p>
+        </m.p>
 
         {/* Description */}
-        <motion.p
+        <m.p
           variants={itemVariants}
           className="text-base md:text-lg max-w-xl mx-auto leading-relaxed mb-12"
           style={{ color: "var(--muted-foreground)" }}
         >
           I craft visual experiences that merge art and technology — bold identities, seamless interfaces, and stories told through design.
-        </motion.p>
+        </m.p>
 
         {/* CTAs */}
-        <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <motion.a
+        <m.div variants={itemVariants} className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <m.a
             href="#portfolio"
             className="group inline-flex items-center gap-3 px-8 py-4 rounded-full font-semibold text-sm tracking-wide transition-all"
             style={{
@@ -145,15 +145,15 @@ export function HeroSection() {
             whileTap={{ scale: 0.97 }}
           >
             View My Work
-            <motion.span
+            <m.span
               className="inline-block"
               animate={{ x: [0, 4, 0] }}
               transition={{ duration: 1.5, repeat: Infinity }}
             >
               →
-            </motion.span>
-          </motion.a>
-          <motion.a
+            </m.span>
+          </m.a>
+          <m.a
             href="#contact"
             className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-semibold text-sm tracking-wide border transition-all"
             style={{ borderColor: "var(--border)", color: "var(--foreground)" }}
@@ -161,11 +161,11 @@ export function HeroSection() {
             whileTap={{ scale: 0.97 }}
           >
             Get in Touch
-          </motion.a>
-        </motion.div>
+          </m.a>
+        </m.div>
 
         {/* Stats row */}
-        <motion.div
+        <m.div
           variants={itemVariants}
           className="flex items-center justify-center gap-8 mt-16 pt-16 border-t"
           style={{ borderColor: "var(--border)" }}
@@ -187,26 +187,26 @@ export function HeroSection() {
               </p>
             </div>
           ))}
-        </motion.div>
-      </motion.div>
+        </m.div>
+      </m.div>
 
       {/* Scroll indicator */}
-      <motion.div
+      <m.div
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5 }}
       >
-        <motion.div
+        <m.div
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
         >
           <ArrowDown size={16} style={{ color: "var(--muted-foreground)" }} />
-        </motion.div>
+        </m.div>
         <span className="text-xs tracking-widest uppercase" style={{ color: "var(--muted-foreground)" }}>
           Scroll
         </span>
-      </motion.div>
+      </m.div>
     </section>
   )
 }
