@@ -14,15 +14,15 @@ export function LoadingScreen() {
           clearInterval(interval)
           return 100
         }
-        return prev + Math.floor(Math.random() * 8) + 3
+        return prev + Math.floor(Math.random() * 12) + 5
       })
-    }, 40)
+    }, 30)
     return () => clearInterval(interval)
   }, [])
 
   useEffect(() => {
     if (count >= 100) {
-      const timeout = setTimeout(() => setIsLoading(false), 600)
+      const timeout = setTimeout(() => setIsLoading(false), 400)
       return () => clearTimeout(timeout)
     }
   }, [count])
