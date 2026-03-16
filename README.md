@@ -12,6 +12,12 @@ A modern, responsive portfolio website built with **Next.js**, **TypeScript**, *
 - Tailwind CSS with utility-first styling + animations
 - Form handling with `react-hook-form` + validation via `zod`
 
+## 🌐 Live Demo
+
+You can view the deployed site here:
+
+- https://saptarshi-designer.vercel.app/
+
 ## 🗂 Project Structure
 
 - `app/` - Next.js app router pages + global styles
